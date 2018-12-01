@@ -23,6 +23,6 @@ public class ProductController {
 		List<Product> newProductList = productService.findNewProductList();
 		model.addAttribute("hotProductList", hotProductList);
 		model.addAttribute("newProductList",newProductList);
-		return "index";
+		return "index";		
 	}
 }
