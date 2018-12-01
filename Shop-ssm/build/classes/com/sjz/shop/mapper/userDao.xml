@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sjz.shop.mapper.userDao">
+	<insert id="regist" parameterType="User" >
+		insert into user 
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+				uid,
+			 <if test="username != null and username !='' " >
+         		username,
+       		</if>
+       		<if test="password != null and password !='' " >
+         		password,
+       		</if>
+       		<if test="name != null and name !='' " >
+         		name,
+       		</if>
+       		<if test="email != null and email !='' " >
+         		email,
+       		</if>
+       		<if test="telephone != null and telephone !='' " >
+         		telephone,
+       		</if>
+       		<if test="birthday != null and birthday !='' " >
+         		birthday,
+       		</if>
+       		<if test="sex != null and sex !='' " >
+         		sex,
+       		</if>
+       		<if test="state != null and state !='' " >
+         		state,
+       		</if>
+       		<if test="code != null and code !='' " >
+         		code,
+       		</if>
+       		 		
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+				1,
+		 	<if test="username != null and username !='' " >
+         		#{username},
+       		</if>
+       		<if test="password != null and password !='' " >
+         		#{password},
+       		</if>
+       		<if test="name != null and name !='' " >
+         		#{name},
+       		</if>
+       		<if test="email != null and email !='' " >
+         		#{email},
+       		</if>
+       		<if test="telephone != null and telephone !='' " >
+         		#{telephone},
+       		</if>
+       		<if test="birthday != null and birthday !='' " >
+         		#{birthday},
+       		</if>
+       		<if test="sex != null and sex !='' " >
+         		#{sex},
+       		</if>
+       		<if test="state != null and state !='' " >
+         		#{state},
+       		</if>
+       		<if test="code != null and code !='' " >
+         		#{code},
+       		</if>
+		 </trim>
+	</insert>
+	<select id="checkUsername" parameterType="String" resultType="Integer">
+		select count(1) from user where username=#{ username }
+	</select>
+	<select id="login" parameterType="User" resultType="User">
+		select * from user where username=#{ username } and password=#{ password }
+	</select>
+	<select id="Autologin" parameterType="String" resultType="User">
+		select * from user where username=#{ 0 } and password=#{ 1 }
+	</select>
+</mapper>
