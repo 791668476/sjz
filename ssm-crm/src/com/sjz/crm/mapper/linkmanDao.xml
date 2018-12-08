@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper  namespace="com.sjz.crm.mapper.linkmanDao">
+
+	<resultMap type="LinkMan" id="lkm_id">
+		<result column="lkm_cust_id" property="cust_id" />
+	</resultMap>
+
+	<insert id="addLinkman" parameterType="LinkMan">
+		insert into cst_linkman(lkm_cust_id,lkm_name,lkm_gender,lkm_phone,lkm_mobile) 
+		values (#{cust_id},#{lkm_name},#{lkm_gender},#{lkm_phone},#{lkm_mobile})
+	</insert>
+	<select id="listLinkman" resultType="LinkMan">
+		select * from cst_linkman
+	</select>
+	<delete id="deleteLinkman" parameterType="Integer">
+		delete from cst_linkman where lkm_id=#{lkm_id}
+	</delete>
+</mapper>

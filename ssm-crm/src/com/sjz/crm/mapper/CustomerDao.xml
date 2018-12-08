@@ -7,4 +7,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into cst_customer(cust_name,cust_level,cust_source,cust_linkman,cust_phone,cust_mobile) 
 		values (#{cust_name},#{cust_level},#{cust_source},#{cust_linkman},#{cust_phone},#{cust_mobile}) 		
 	</insert>
+	
+	<select id="listCustomer" resultType="Customer">
+		select * from cst_customer;
+	</select>	
+	<delete id="deleteCustomer" parameterType="Integer">
+		delete from cst_customer where cust_id=#{cust_id}
+	</delete>
 </mapper>
