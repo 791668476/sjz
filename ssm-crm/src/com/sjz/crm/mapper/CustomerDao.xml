@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sjz.crm.mapper.CustomerDao">
+	<insert id="addCustomer"  parameterType="Customer">
+		insert into cst_customer(cust_name,cust_level,cust_source,cust_linkman,cust_phone,cust_mobile) 
+		values (#{cust_name},#{cust_level},#{cust_source},#{cust_linkman},#{cust_phone},#{cust_mobile}) 		
+	</insert>
+</mapper>
