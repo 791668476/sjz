@@ -64,7 +64,7 @@ public class UserController {
 	@RequestMapping(value="/logout")
 	public String logout(HttpSession session){
 		session.removeAttribute("user");
-		return "index";
+		return "redirect:/index";
 	}
 	
 	@RequestMapping(value="/Autologin")

@@ -7,4 +7,5 @@ import com.sjz.shop.pojo.Product;
 public interface productDao {
 	List<Product> findHotProductList();
 	List<Product> findNewProductList();
+	Product findProduct(Integer pid);
 }
