@@ -33,14 +33,14 @@
     <servlet-name>boot-crm</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-  <filter>
-    <filter-name>AutoLoginFilter</filter-name>
-    <filter-class>com.sjz.shop.filter.AutoLoginFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>AutoLoginFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
+		<!--  <filter>
+		    <filter-name>AutoLoginFilter</filter-name>
+		    <filter-class>com.sjz.shop.filter.AutoLoginFilter</filter-class>
+		  </filter>
+		  <filter-mapping>
+		    <filter-name>AutoLoginFilter</filter-name>
+		    <url-pattern>/*</url-pattern>
+		  </filter-mapping> -->
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
