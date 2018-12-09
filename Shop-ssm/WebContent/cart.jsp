@@ -29,6 +29,18 @@
 				padding: 0 10px;
 			}
 		</style>
+		<script type="text/javascript">
+			function delProFromCart(pid){
+				if(confirm("您是否要删除该项？")){
+					location.href="${pageContext.request.contextPath }/delProFromCart?pid="+pid;
+				}
+			}
+			function clearCart(){
+				if(confirm("您是否要清空购物车？")){
+					location.href="${pageContext.request.contextPath }/clearCart";
+				}
+			}
+		</script>
 	</head>
 
 	<body>
@@ -73,7 +85,7 @@
 									<span class="subtotal">￥${entry.value.subtotal }</span>
 								</td>
 								<td>
-									<a href="javascript:;" class="delete">删除</a>
+									<a href="javascript:;" onclick="delProFromCart('${entry.value.product.pid}')" class="delete">删除</a>
 								</td>
 							</tr>
 							
@@ -91,7 +103,7 @@
 			</em> 赠送积分: <em style="color:#ff6600;">596</em>&nbsp; 商品金额: <strong style="color:#ff6600;">￥596.00元</strong>
 				</div>
 				<div style="text-align:right;margin-top:10px;margin-bottom:10px;">
-					<a href="order_info.htm" id="clear" class="clear">清空购物车</a>
+					<a href="javascript:;" onclick="clearCart()" id="clear" class="clear">清空购物车</a>
 					<a href="order_info.htm">
 						<input type="submit" width="100" value="提交订单" name="submit" border="0" style="background: url('./images/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 						height:35px;width:100px;color:white;">
@@ -104,7 +116,7 @@
 		<c:if test="${empty cart.cartItems }">
 			<div>
 				<img alt="" src="${pageContext.request.contextPath }/images/cart-empty.png">
-				<a href="${pageContext.request.contextPath }">返回首页</a>
+				<a href="${pageContext.request.contextPath }/index">返回首页</a>
 			</div>
 		</c:if>
 		

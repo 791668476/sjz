@@ -83,6 +83,28 @@ public class ProductController {
 		return "cart";
 	}
 	
+	@RequestMapping(value="/delProFromCart")
+	public String delProFromCart(Integer pid,HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		Cart cart = (Cart) session.getAttribute("cart");
+		if(cart!=null){
+			Map<String, CartItem> cartItems = cart.getCartItems();
+			cart.setTotal(cart.getTotal()-cartItems.get(pid+"").getSubtotal());
+			cartItems.remove(pid+"");
+			cart.setCartItems(cartItems);
+		}
+		session.setAttribute("cart", cart);
+		
+		return "cart";
+	}
+	//清空购物车
+	@RequestMapping(value="/clearCart")
+	public String clearCart(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		session.removeAttribute("cart");
+		return "cart";
+	}
 	
 	
 	
