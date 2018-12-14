@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.sjz.shop.controller.UserController;
 import com.sjz.shop.pojo.User;
-import com.sjz.shop.service.UserServiceImpl;
 
 public class AutoLoginFilter implements Filter{
 	@Override

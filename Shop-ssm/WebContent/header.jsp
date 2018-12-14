@@ -5,7 +5,7 @@
 <!-- 登录 注册 购物车... -->
 <div class="container-fluid">
 	<div class="col-md-4">
-		<img src="img/logo2.png" />
+		<h3>商城项目</h3>
 	</div>
 	<div class="col-md-5">
 		<img src="img/header.png" />
@@ -38,15 +38,13 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">首页</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath }/index">首页</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="${pageContext.request.contextPath }/index">手机数码<span class="sr-only">(current)</span></a></li>
-					<li><a href="#">电脑办公</a></li>
-					<li><a href="#">电脑办公</a></li>
-					<li><a href="#">电脑办公</a></li>
+				<ul class="nav navbar-nav" id="categoryUl">
+					<%-- <li class="active"><a href="${pageContext.request.contextPath }/index">手机数码<span class="sr-only">(current)</span></a></li> --%>
+					
 				</ul>
 				<form class="navbar-form navbar-right" role="search">
 					<div class="form-group">
@@ -56,5 +54,26 @@
 				</form>
 			</div>
 		</div>
+		
+		<script type="text/javascript">
+			$(function(){
+				var content = "";
+				$.post(
+						"${pageContext.request.contextPath}/categoryList",
+						function(data){
+							//[{"cid":"xxx","cname":"xxxx"},{},{}]
+							//动态创建<li><a href="#">${category.cname }</a></li>
+							for(var i=0;i<data.length;i++){
+								content+="<li><a href='${pageContext.request.contextPath}/productList?cid="+data[i].cid+"'>"+data[i].cname+"</a></li>";
+							}
+							
+							//将拼接好的li放置到ul中
+							$("#categoryUl").html(content);
+						},
+						"json"
+					);
+			});
+		</script>
+		
 	</nav>
 </div>

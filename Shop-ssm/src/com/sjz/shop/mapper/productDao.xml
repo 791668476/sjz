@@ -13,4 +13,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findProduct" parameterType="Integer" resultType="Product">
 		select * from product where pid=#{pid}
 	</select>
+	<select id="findCategory" resultType="Category">
+		select * from category
+	</select>
+	<select id="findProductByCid" parameterType="String" resultType="Product">
+		select * from product where cid=#{cid} limit 0,12
+	</select>
 </mapper>
